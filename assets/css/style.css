@@ -1,0 +1,66 @@
+* {
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+header {
+    display: block;
+    margin-top: 20px;
+    justify-content: space-between;
+}
+
+a {
+    text-decoration: none;
+    padding: 20px;
+}
+
+#start {
+    text-align: center;
+}
+
+#timer {
+    font-weight: bold;
+    padding-right: 15px;
+    float: right;
+}
+
+#card {
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+    padding: 50px;
+    display: grid;
+    grid-template-columns: .5fr;
+}
+
+#question-choice {
+    font-weight: lighter;
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+#choices {
+    width: 500px;
+}
+
+.button-grid {
+    display: grid;
+    max-width: 150px;
+    width: 80%;
+    margin: 10px 0;
+    gap: 5px;
+}
+
+.button {
+    color: white;
+    font-size: 14px;
+    border-radius: 8px;
+    padding: 5px 5px;
+    text-align: start;
+    background-color: purple;
+}
+
+#scores input:focus {
+    padding: 5px;
+    margin: 5px 0 5px;
+    border: 1px solid purple;
+}

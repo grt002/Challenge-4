@@ -4,9 +4,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Coding Quiz Challenge</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
+
 <body>
+    <!-- Header -->
+    <header id="header">
+        <a href="#"><span>View high scores</span></a>
+        <h3 id="timer">Time: 75</h3>
+    </header>
+    
+    <!-- Title Page -->
+    <section id="start">
+        <h2>Coding Quiz Challenge</h2>
+        <p>
+            Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds.
+        </p>
+        <!-- Start Button -->
+        <button id="start-button" class="button">Start Quiz</button>
+    </section>
+
+    <!-- Questions -->
+    <section id="card">
+        <div id="questions" class="hide">
+            <div id="question-choice"></div>
+
+            <div id="choices" class="button-grid">
+                <ol>
+                    <li id="choice-1" class="button"></li>
+                    <li id="choice-2" class="button"></li>
+                    <li id="choice-3" class="button"></li>
+                    <li id="choice-4" class="button"></li>
+                </ol>
+            </div>
+
+            <div id="answer"></div>
+        </div>
+    </section>
+
+    <!-- Saved Scores -->
+    <section>
+        <div id="scores" class="hide">
+            <h3>All done!</h3>
+            <p>Your final score is <span id="score"></span></p>
+            <label>Enter initials: </label>
+            <input type="text" name="initials" id="initials" placeholder="" />
+            <button id="submit" class="button">Submit</button>
+        </div>
+
+        <div id="high-scores" class="hide">
+            <h3>High Scores</h3>
+            <ol id="stored-score"></ol>
+            <button id="back" class="button">Go back</button>
+            <button id="clear" class="button">Clear High Scores</button>
+        </div>
+    </section>
     
 </body>
 </html>
