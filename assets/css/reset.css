@@ -1,0 +1,39 @@
+/* Box Sizing */
+
+* {
+    box-sizing: border-box;
+  }
+
+/* Margin and Padding */  
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+
+/* Typography */  
+
+  html {
+    font-size: 16px;
+  }
+  
+  body {
+    font-family: sans-serif;
+    font-size: 1em;
+    line-height: 1em;
+  }
+
+/* Links */  
+
+  a {
+    color: black;
+    text-decoration: none;
+  }
+
+/* Lists */  
+
+  ul, ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
