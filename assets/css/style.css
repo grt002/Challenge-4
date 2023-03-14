@@ -1,6 +1,14 @@
+/* Global Styles */
+
 * {
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+.hide {
+    display: none;
+}
+
+/* Header Styles */
 
 header {
     display: block;
@@ -13,33 +21,40 @@ a {
     padding: 20px;
 }
 
+/* Start Page Styles */
+
 #start {
     text-align: center;
 }
 
+/* Timer Styles */
+
 #timer {
-    font-weight: bold;
+    font-weight: lighter;
     padding-right: 15px;
-    float: right;
 }
 
+/* Question Styles */
+
 #card {
+    display: grid;
     align-items: center;
     justify-content: center;
     margin: 5px;
     padding: 50px;
-    display: grid;
-    grid-template-columns: .5fr;
 }
 
 #question-choice {
-    font-weight: lighter;
+    font-weight: bold;
     margin-bottom: 20px;
     font-size: 22px;
 }
 
 #choices {
     width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .button-grid {
@@ -56,11 +71,43 @@ a {
     border-radius: 8px;
     padding: 5px 5px;
     text-align: start;
-    background-color: purple;
+    background-color: indigo;
+}
+
+.button:hover {
+    background-color: violet;
 }
 
 #scores input:focus {
     padding: 5px;
-    margin: 5px 0 5px;
-    border: 1px solid purple;
+    margin: 5px 0;
+    border: 1px solid deepskyblue;
+}
+
+/* Saved Scores Styles */
+
+#scores {
+    text-align: center;
+}
+
+#scores h3 {
+    margin-bottom: 15px;
+}
+
+#submit {
+    margin-top: 10px;
+}
+
+#high-scores {
+    text-align: center;
+}
+
+#stored-score {
+    margin-top: 15px;
+    padding-inline-start: 0;
+}
+
+#back,
+#clear {
+    margin-top: 15px;
 }
