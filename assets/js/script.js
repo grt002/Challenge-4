@@ -1,31 +1,40 @@
-// constant Declarations
+// Variable Declarations - HTML
 
-const highscore = document.getElementById("high-scores");
-const questionEl = document.getElementById("questions");
-const startButton = document.getElementById("start-button");
-const beginEl = document.getElementById("start");
-const questionChoice = document.getElementById("question-choice");
-const questionAns1 = document.getElementById("choice-1");
-const questionAns2 = document.getElementById("choice-2");
-const questionAns3 = document.getElementById("choice-3");
-const questionAns4 = document.getElementById("choice-4");
-const currentQuestion = 0
-const score = 0;
-const answerEl = document.getElementById("answer");
-const timeLeft = 75;
-const timerEl = document.getElementById("timer"); 
-const submitScore = document.getElementById("scores")
-const scores = document.getElementById("score");
-const highScores = document.getElementById("high-scores");
-const header = document.getElementById("header");
-const back = document.getElementById("back");
-const clear = document.getElementById("clear");
-const initials = document.getElementById("initials");
-const storedScore = document.getElementById("stored-score")
+var questionEl = document.getElementById("questions");
+var startBtn = document.getElementById("start-button");
+var startPageEl = document.getElementById("start");
+var questionChoice = document.getElementById("question-choice");
+var answerChoice1 = document.getElementById("choice-1");
+var answerChoice2 = document.getElementById("choice-2");
+var answerChoice3 = document.getElementById("choice-3");
+var answerChoice4 = document.getElementById("choice-4");
+var answerEl = document.getElementById("answer");
+var timerEl = document.getElementById("timer"); 
+var submitScore = document.getElementById("scores");
+var scoresEl = document.getElementById("score");
+var highScores = document.getElementById("high-scores");
+var header = document.getElementById("header");
+var back = document.getElementById("back");
+var clear = document.getElementById("clear");
+var initialsEl = document.getElementById("initials");
+var storedScoreEl = document.getElementById("stored-score");
+var submitScoreBtn = document.getElementById("submit");
+var highScoreBtn = document.getElementById("hs-button");
+
+// Variable Declarations - Game Script
+
+var currentQuestion = 0;
+var score = 0;
+var playing = true;
+var timeLeft = 75;
+var highScoreArray = JSON.parse(localStorage.getItem("High Score Table"));
+    if (highScoreArray === null) {
+        highScoreArray = [];
+    }
 
 // Questions
 
-const questions = [
+var questions = [
     {
         question: "Commonly used data types DO NOT include:",
         choices: ["1. string", "2. boolean", "3. alerts", "4. numbers"],
@@ -59,19 +68,22 @@ const questions = [
 
  // Start Button
 
- startButton.addEventListener("click", function(event){
+ startBtn.addEventListener("click", function(event){
     console.log(currentQuestion);
-    beginEl.classList.add("hide");
+    startPageEl.classList.add("hide");
     questionEl.classList.remove("hide");
-    updateQuestion()
+    updateQuestion();
+    startTimer();
+    resetGame();
 })
 
 // Choosing Answers
 
-questionAns1.addEventListener("click", function(event){
+answerChoice1.addEventListener("click", function(event){
     console.log("clicked1")
     if (0 === questions[currentQuestion].answer){
         answerEl.textContent = "Correct!"
+        score+=10
         currentQuestion+=1
         updateQuestion()
     } else {
@@ -81,10 +93,11 @@ questionAns1.addEventListener("click", function(event){
         timeLeft-=10
     }
 });
-questionAns2.addEventListener("click", function(event){
+answerChoice2.addEventListener("click", function(event){
     console.log("clicked2") 
     if (1 === questions[currentQuestion].answer){
         answerEl.textContent = "Correct!"
+        score+=10
         currentQuestion+=1
         updateQuestion()
     } else {
@@ -94,10 +107,11 @@ questionAns2.addEventListener("click", function(event){
         timeLeft-=10
     }
 });
-questionAns3.addEventListener("click", function(event){
+answerChoice3.addEventListener("click", function(event){
     console.log("clicked3") 
-    if (2 === questions[currentQuestion].answer - 1){
+    if (2 === questions[currentQuestion].answer){
         answerEl.textContent = "Correct!"
+        score+=10
         currentQuestion+=1
         updateQuestion()
     } else {
@@ -107,10 +121,11 @@ questionAns3.addEventListener("click", function(event){
         updateQuestion()
     }
 });
-questionAns4.addEventListener("click", function(event){
+answerChoice4.addEventListener("click", function(event){
     console.log("clicked4") 
     if (3 === questions[currentQuestion].answer){
         answerEl.textContent = "Correct!"
+        score+=10
         currentQuestion+=1
         updateQuestion()
     } else {
@@ -127,10 +142,12 @@ questionAns4.addEventListener("click", function(event){
 function updateQuestion() {
     if (currentQuestion >= 0 && currentQuestion < questions.length) {
         questionChoice.textContent = questions[currentQuestion].question;
-        questionAns1.textContent = questions[currentQuestion].choices[0];
-        questionAns2.textContent = questions[currentQuestion].choices[1];
-        questionAns3.textContent = questions[currentQuestion].choices[2];
-        questionAns4.textContent = questions[currentQuestion].choices[3];
+        answerChoice1.textContent = questions[currentQuestion].choices[0];
+        answerChoice2.textContent = questions[currentQuestion].choices[1];
+        answerChoice3.textContent = questions[currentQuestion].choices[2];
+        answerChoice4.textContent = questions[currentQuestion].choices[3];
+    } else {
+        playing=false;
     }
 }
 
@@ -141,14 +158,12 @@ function startTimer() {
         timeLeft--;
         timerEl.textContent = "Time: " + timeLeft;
 
-        if (timeLeft < 0) {
+        if (timeLeft === 0 || playing===false) {
             displayScore(score);
             clearInterval(timeInterval);
-        }
+        } 
     }, 1000);
 }
-
-startButton.onclick = startTimer
 
 // Score
 
@@ -160,13 +175,55 @@ function totalScore() {
     return score = timeLeft;
 }
 
-
-function displayScore(s) {
-    questionEl.classList.add("hide")
-    submitScore.classList.remove("hide")
+function displayScore() {
+    questionEl.classList.add("hide");
+    submitScore.classList.remove("hide");
+    scoresEl.textContent = score;
 }
 
-function storeScore(s) { 
-    submitScore.classList.add("hide")
-    highScores.classList.remove("hide")
+function storeScore() { 
+    highScoreArray.push({initials: initialsEl.value, score: score});
+    console.log(highScoreArray);
+    localStorage.setItem("High Score Table", JSON.stringify(highScoreArray));
+    displayHighScore();
 }
+
+function displayHighScore() {
+    submitScore.classList.add("hide");
+    highScores.classList.remove("hide");
+    startPageEl.classList.add("hide");
+    storedScoreEl.innerHTML="";
+    for (var i = 0; i < highScoreArray.length; i++) {
+        var newScore = document.createElement("li");
+        newScore.textContent=highScoreArray[i].initials + " - " + highScoreArray[i].score;
+        console.log(newScore);
+        storedScoreEl.appendChild(newScore);
+    }
+}
+
+function resetGame() {
+    score = 0;
+    timeLeft = 75;
+    currentQuestion = 0;
+    playing = true;
+    answerEl.textContent = "";
+    updateQuestion();
+}
+
+submitScoreBtn.addEventListener("click", storeScore);
+
+back.addEventListener("click", function(){
+    highScores.classList.add("hide");
+    startPageEl.classList.remove("hide");
+});
+
+clear.addEventListener("click", function(){
+    highScoreArray=[];
+    displayHighScore();
+    localStorage.setItem("High Score Table", JSON.stringify(highScoreArray));
+    console.log("Running");
+});
+
+highScoreBtn.addEventListener("click", function(){
+    displayHighScore();
+});
