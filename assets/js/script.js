@@ -1,27 +1,26 @@
-// Variable Declarations - HTML
+// HTML Variables
 
 var questionEl = document.getElementById("questions");
-var startBtn = document.getElementById("start-button");
 var startPageEl = document.getElementById("start");
+var answerEl = document.getElementById("answer");
+var timerEl = document.getElementById("timer"); 
+var submitScoreEl = document.getElementById("submit-score");
+var scoreEl = document.getElementById("score");
+var highScoresEl = document.getElementById("high-scores");
+var initialsEl = document.getElementById("initials");
+var storedScoreEl = document.getElementById("stored-score");
 var questionChoice = document.getElementById("question-choice");
 var answerChoice1 = document.getElementById("choice-1");
 var answerChoice2 = document.getElementById("choice-2");
 var answerChoice3 = document.getElementById("choice-3");
 var answerChoice4 = document.getElementById("choice-4");
-var answerEl = document.getElementById("answer");
-var timerEl = document.getElementById("timer"); 
-var submitScore = document.getElementById("scores");
-var scoresEl = document.getElementById("score");
-var highScores = document.getElementById("high-scores");
-var header = document.getElementById("header");
-var back = document.getElementById("back");
-var clear = document.getElementById("clear");
-var initialsEl = document.getElementById("initials");
-var storedScoreEl = document.getElementById("stored-score");
-var submitScoreBtn = document.getElementById("submit");
+var startBtn = document.getElementById("start-button");
+var submitScoreBtn = document.getElementById("submit-button");
 var highScoreBtn = document.getElementById("hs-button");
+var backBtn = document.getElementById("back-button");
+var clearBtn = document.getElementById("clear-button");
 
-// Variable Declarations - Game Script
+// Game Variables
 
 var currentQuestion = 0;
 var score = 0;
@@ -165,7 +164,7 @@ function startTimer() {
     }, 1000);
 }
 
-// Score
+// Scoring
 
 function totalScore() {
     if (timeLeft < 0) {
@@ -177,8 +176,8 @@ function totalScore() {
 
 function displayScore() {
     questionEl.classList.add("hide");
-    submitScore.classList.remove("hide");
-    scoresEl.textContent = score;
+    submitScoreEl.classList.remove("hide");
+    scoreEl.textContent = score;
 }
 
 function storeScore() { 
@@ -189,8 +188,8 @@ function storeScore() {
 }
 
 function displayHighScore() {
-    submitScore.classList.add("hide");
-    highScores.classList.remove("hide");
+    submitScoreEl.classList.add("hide");
+    highScoresEl.classList.remove("hide");
     startPageEl.classList.add("hide");
     storedScoreEl.innerHTML="";
     for (var i = 0; i < highScoreArray.length; i++) {
@@ -201,6 +200,8 @@ function displayHighScore() {
     }
 }
 
+// Reset the Game
+
 function resetGame() {
     score = 0;
     timeLeft = 75;
@@ -210,14 +211,16 @@ function resetGame() {
     updateQuestion();
 }
 
+// Other Button Event Listeners
+
 submitScoreBtn.addEventListener("click", storeScore);
 
-back.addEventListener("click", function(){
-    highScores.classList.add("hide");
+backBtn.addEventListener("click", function(){
+    highScoresEl.classList.add("hide");
     startPageEl.classList.remove("hide");
 });
 
-clear.addEventListener("click", function(){
+clearBtn.addEventListener("click", function(){
     highScoreArray=[];
     displayHighScore();
     localStorage.setItem("High Score Table", JSON.stringify(highScoreArray));

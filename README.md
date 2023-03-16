@@ -4,11 +4,13 @@
 
 We were given the following assignment in the FSF coding course for this project:
 
-At some point in your journey to become a full-stack web developer, you’ll likely be asked to complete a coding assessment, perhaps as part of an interview process. A typical coding assessment includes both multiple-choice questions and interactive coding challenges. 
+<!-- Section below is from the EdEx course -->
+
+"At some point in your journey to become a full-stack web developer, you’ll likely be asked to complete a coding assessment, perhaps as part of an interview process. A typical coding assessment includes both multiple-choice questions and interactive coding challenges. 
 
 To help familiarize you with these tests and allow you to use the skills covered in this module, this Challenge invites you to build a timed coding quiz with multiple-choice questions. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript code that you write. It will have a clean, polished, and responsive user interface. 
 
-This week’s coursework will equip you with all the skills you need to succeed in this assignment.
+This week’s coursework will equip you with all the skills you need to succeed in this assignment."
 
 ## User Story
 
@@ -34,6 +36,8 @@ WHEN the game is over
 THEN I can save my initials and my score
 ```
 
+<!-- End EdEx Course Information -->
+
 ## Installation
 
 GitHub Repository Link:
@@ -42,11 +46,15 @@ Deployed Application Link:
 
 ## Usage
 
+Open the Deployed Application Link in your default browser. Use the mouse to click the start button and to click the answer choices to each question. Enter your initials using your keyboard to save your scores at the end of the quiz. Screenshots are viewable below.
 
-
-## Credits
-
-
+![Start Screen](assets/images/image%2001.PNG)
+![Question 1](assets/images/image%2002.PNG)
+![Question 2](assets/images/image%2003.PNG)
+![Question 3](assets/images/image%2004.PNG)
+![Question 4](assets/images/image%2005.PNG)
+![Question 5](assets/images/image%2006.PNG)
+![Score Page](assets/images/image%2007.PNG)
 
 ## License
 
