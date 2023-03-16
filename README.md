@@ -40,9 +40,9 @@ THEN I can save my initials and my score
 
 ## Installation
 
-GitHub Repository Link:
+GitHub Repository Link: https://github.com/grt002/Challenge-4
 
-Deployed Application Link:
+Deployed Application Link: https://grt002.github.io/Challenge-4/
 
 ## Usage
 
